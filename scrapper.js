@@ -16,13 +16,6 @@ async function countHeadingTags(url, proxyUrl = null) {
             timeout: 5000
         };
 
-        if (proxyUrl) {
-            config.proxy = {
-                host: proxyUrl,
-                port: 8080
-            };
-        }
-
         const response = await axios.get(url, config);
 
         if (response.status !== 200) {
@@ -43,7 +36,6 @@ async function countHeadingTags(url, proxyUrl = null) {
 
         counts.total = counts.h1 + counts.h2 + counts.h3 + counts.h4 + counts.h5 + counts.h6;
 
-        // Print detailed results
         console.log('Heading Tags Analysis:');
         console.log('=====================');
         console.log(`H1 tags: ${counts.h1}`);
